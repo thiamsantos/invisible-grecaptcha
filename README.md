@@ -7,6 +7,8 @@
 
 > Invisible reCAPTCHA integration
 
+[Checkout the demo](https://thiamsantos.github.io/invisible-grecaptcha/).
+
 ## Table of Contents
 
 -   [Install](#install)
@@ -75,7 +77,7 @@ Create an invisible grecaptcha and returns the id of the capctha.
 **Parameters**
 
 -   `options` **[Object](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Object)** The options to create a invisible recaptcha.
-    -   `options.sitekey` **[string](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String)** Your recaptcha sitekey.
+    -   `options.sitekey` **[string](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String)** Your recaptcha sitekey. You can get one here: <https://www.google.com/recaptcha/admin>.
     -   `options.callback` **[verifyCallback](#verifycallback)** Captcha callback.
     -   `options.locale` **[string](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String)?** Language of the captcha. See available language codes <https://developers.google.com/recaptcha/docs/language>. Auto-detects the user's language if unspecified. (optional, default `null`)
     -   `options.position` **[string](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String)** Position the reCAPTCHA badge. Values: bottomright, bottomleft and inline. (optional, default `bottomright`)
