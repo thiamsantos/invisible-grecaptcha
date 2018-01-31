@@ -6,9 +6,9 @@ import {
   buildParamError
 } from './utils'
 
-function render({container, siteKey, callback, position}) {
+function render({container, sitekey, callback, position}) {
   const recaptchaId = window.grecaptcha.render(container, {
-    siteKey,
+    sitekey,
     callback,
     size: 'invisible',
     badge: position
@@ -24,15 +24,15 @@ function createContainer() {
 }
 
 export function createInvisibleGrecaptcha({
-  siteKey = isRequired('siteKey'),
+  sitekey = isRequired('sitekey'),
   callback = isRequired('callback'),
-  locale = false,
+  locale = null,
   position = 'bottomright',
   container = createContainer()
 }) {
   return new Promise((resolve, reject) => {
-    if (!isString(siteKey)) {
-      reject(buildParamError('siteKey', 'string'))
+    if (!isString(sitekey)) {
+      reject(buildParamError('sitekey', 'string'))
     }
 
     if (!isString(position)) {
@@ -53,11 +53,11 @@ export function createInvisibleGrecaptcha({
       }`
 
       loadScript(url).then(() => {
-        resolve(render({container, siteKey, callback, position}))
+        resolve(render({container, sitekey, callback, position}))
       })
     }
 
-    resolve(render({container, siteKey, callback, position}))
+    resolve(render({container, sitekey, callback, position}))
   })
 }
 

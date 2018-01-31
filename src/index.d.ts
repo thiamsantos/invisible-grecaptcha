@@ -9,7 +9,7 @@ declare namespace invisibleGrecaptcha {
   }
 
   interface Options {
-    siteKey: string
+    sitekey: string
     callback: Function
     locale?: string
     position?: string
@@ -19,5 +19,5 @@ declare namespace invisibleGrecaptcha {
   function createInvisibleRecaptcha(options: Options): Grecaptcha
   function execute(grecaptcha: Grecaptcha)
   function reset(grecaptcha: Grecaptcha)
-  function getResponse(grecaptcha: Grecaptcha)
+  function getResponse(grecaptcha: Grecaptcha): string
 }
