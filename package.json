@@ -1,0 +1,26 @@
+{
+  "name": "invisible-grecaptcha",
+  "version": "0.0.1",
+  "description": "Invisible reCAPTCHA integration",
+  "main": "dist/index.js",
+  "scripts": {
+    "test": "jest"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/thiamsantos/invisible-grecaptcha.git"
+  },
+  "keywords": [
+    "recaptcha",
+    "google",
+    "recaptcha",
+    "invisible",
+    "captcha"
+  ],
+  "author": "Thiago Santos",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/thiamsantos/invisible-grecaptcha/issues"
+  },
+  "homepage": "https://github.com/thiamsantos/invisible-grecaptcha#readme"
+}
