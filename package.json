@@ -13,7 +13,7 @@
     "test:watch": "jest --watch",
     "coverage": "jest --coverage",
     "build": "rollup -c && uglifyjs dist/index.umd.js -cm -o dist/index.min.js",
-    "precommit": "npm run lint && npm test && npm run build && npm run docs && git add README.md",
+    "precommit": "npm run lint && npm run build && npm run docs && git add README.md",
     "prepublish": "npm run build",
     "coveralls": "npm run coverage && cat coverage/lcov.info | coveralls",
     "docs": "documentation readme src/index.js --section API -q"
@@ -68,5 +68,6 @@
     "semi": false,
     "bracketSpacing": false,
     "trailingComma": "none"
-  }
+  },
+  "dependencies": {}
 }

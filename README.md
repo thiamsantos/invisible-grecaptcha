@@ -36,7 +36,7 @@ You can find the library on `window.invisibleGrecaptcha`.
 
 ```js
 import {
-  createInvisibleRecaptcha, 
+  createInvisibleGrecaptcha, 
   execute, 
   reset, 
   getResponse,
@@ -47,7 +47,7 @@ function verifyCallback(token) {
 }
 
 const grecaptcha = await createInvisibleRecaptcha({
-  siteKey: 'RECAPTCHA_SITE_KEY',
+  sitekey: 'RECAPTCHA_SITE_KEY',
   callback: verifyCallback
 })
 

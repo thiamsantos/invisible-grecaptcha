@@ -46,17 +46,15 @@ export function createInvisibleGrecaptcha({
       reject(buildParamError('callback', 'function'))
     }
 
-    if (!window.grecaptcha) {
-      const url = `https://www.google.com/recaptcha/api.js${
-        locale === false ? '' : `?hl=${encodeURIComponent(locale)}`
-      }`
-
-      loadScript(url).then(() => {
-        resolve(render({container, sitekey, callback, position}))
-      })
+    if (window.grecaptcha) {
+      resolve(render({container, sitekey, callback, position}))
+    } else {
+      loadScript(locale)
+        .then(() => {
+          resolve(render({container, sitekey, callback, position}))
+        })
+        .catch(reject)
     }
-
-    resolve(render({container, sitekey, callback, position}))
   })
 }
 

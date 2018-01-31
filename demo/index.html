@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Invisible Grecaptcha</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.6.2/css/bulma.css">
+    <script src="https://cdn.jsdelivr.net/npm/invisible-grecaptcha/dist/index.min.js"></script>
+</head>
+<body>
+    <div class="section">
+        <div class="container">
+            <h1>Invisible Grecaptcha</h1>
+            <button class="button is-primary" id="execute">Execute</button>
+            <button class="button is-info" id="reset">Reset</button>
+            <button class="button is-primary" id="get-response">Get Response</button>
+        </div>
+    </div>
+    <script src="index.min.js"></script>
+    <script>
+        async function main() {
+            const executeElement = document.getElementById('execute')
+            const resetElement = document.getElementById('reset')
+            const getResponseElement = document.getElementById('get-response')
+
+            function verifyCallback(token) {
+                console.log(token)
+            }
+
+            const {
+                createInvisibleGrecaptcha,
+                execute,
+                reset,
+                getResponse
+            } = window.invisibleGrecaptcha
+
+            const grecaptcha = await createInvisibleGrecaptcha({
+                sitekey: '6LdLnkMUAAAAAA0e7x8KEw9n7W8MMGpwCMszFBwm',
+                callback: verifyCallback,
+                locale: 'pt-BR'
+            })
+
+            executeElement.addEventListener('click', () => {
+                execute(grecaptcha)
+            })
+
+            resetElement.addEventListener('click', () => {
+                reset(grecaptcha)
+            })
+
+            getResponseElement.addEventListener('click', () => {
+                const token = getResponse(grecaptcha)
+                console.log({token})
+            })
+        }
+
+        window.addEventListener('load', main)
+    </script>
+</body>
+</html>

@@ -1,13 +1,16 @@
-export function loadScript(url) {
+const CALLBACK_NAME = '_grecaptcha.onload-callback'
+
+export function loadScript(locale) {
   return new Promise((resolve, reject) => {
+    const url = `https://www.google.com/recaptcha/api.js?onload=${CALLBACK_NAME}${
+      locale === false ? '' : `&hl=${encodeURIComponent(locale)}`
+    }`
+
+    window[CALLBACK_NAME] = resolve
+
     const script = document.createElement('script')
     script.type = 'text/javascript'
     script.src = url
-    script.async = true
-    script.defer = true
-    script.onload = () => {
-      resolve(script)
-    }
     script.onerror = err => {
       reject(new URIError(`The script ${err.target.src} is not accessible.`))
     }
@@ -55,7 +58,7 @@ export function render({container, sitekey, callback, position}) {
     badge: position
   })
 
-  return {recaptchaId, container}
+  return recaptchaId
 }
 
 export function createContainer() {
