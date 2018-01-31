@@ -75,8 +75,8 @@ Create an invisible grecaptcha and returns the id of the capctha.
 **Parameters**
 
 -   `options` **[Object](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Object)** The options to create a invisible recaptcha.
-    -   `options.sitekey` **[string](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String)** Your recaptcha sitekey. (optional, default `isRequired('sitekey')`)
-    -   `options.callback` **[verifyCallback](#verifycallback)** Captcha callback. (optional, default `isRequired('callback')`)
+    -   `options.sitekey` **[string](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String)** Your recaptcha sitekey.
+    -   `options.callback` **[verifyCallback](#verifycallback)** Captcha callback.
     -   `options.locale` **[string](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String)?** Language of the captcha. See available language codes <https://developers.google.com/recaptcha/docs/language>. Auto-detects the user's language if unspecified. (optional, default `null`)
     -   `options.position` **[string](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String)** Position the reCAPTCHA badge. Values: bottomright, bottomleft and inline. (optional, default `bottomright`)
     -   `options.container` **[HTMLElement](https://developer.mozilla.org/docs/Web/HTML/Element)?** Container where the captcha will be renderedd. If none is provided a empty div will be create on the body. (optional, default `createContainer()`)
@@ -89,7 +89,7 @@ Programatically invoke the reCAPTCHA check.
 
 **Parameters**
 
--   `recaptchaId` **[number](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Number)** Captcha id. (optional, default `isRequired('recaptchaId')`)
+-   `recaptchaId` **[number](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Number)** Captcha id.
 
 ### reset
 
@@ -97,7 +97,7 @@ Resets the reCAPTCHA widget.
 
 **Parameters**
 
--   `recaptchaId` **[number](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Number)** Captcha id. (optional, default `isRequired('recaptchaId')`)
+-   `recaptchaId` **[number](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Number)** Captcha id.
 
 ### getResponse
 
@@ -105,7 +105,7 @@ Gets the response for the reCAPTCHA widget.
 
 **Parameters**
 
--   `recaptchaId` **[number](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Number)** Captcha id. (optional, default `isRequired('recaptchaId')`)
+-   `recaptchaId` **[number](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Number)** Captcha id.
 
 Returns **[string](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String)** 
 
