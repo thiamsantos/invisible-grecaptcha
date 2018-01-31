@@ -2,25 +2,53 @@
   "name": "invisible-grecaptcha",
   "version": "0.0.1",
   "description": "Invisible reCAPTCHA integration",
-  "main": "dist/index.js",
+  "main": "dist/index.cjs.js",
+  "module": "dist/index.es.js",
+  "jsnext:main": "dist/index.es.js",
+  "browser": "dist/index.umd.js",
   "scripts": {
-    "test": "jest"
+    "prelint": "prettier --write \"src/**/*.js\" --write rollup.config.js",
+    "lint": "xo --fix",
+    "test": "jest",
+    "build": "rollup -c && uglifyjs dist/index.umd.js -cm -o dist/index.min.js",
+    "precommit": "npm run lint && npm test && npm run build",
+    "prepublish": "npm run build"
   },
+  "files": ["dist", "src/index.d.ts"],
+  "types": "./src/index.d.ts",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/thiamsantos/invisible-grecaptcha.git"
   },
-  "keywords": [
-    "recaptcha",
-    "google",
-    "recaptcha",
-    "invisible",
-    "captcha"
-  ],
+  "keywords": ["recaptcha", "grecapctcha", "google", "invisible", "captcha"],
   "author": "Thiago Santos",
   "license": "MIT",
   "bugs": {
     "url": "https://github.com/thiamsantos/invisible-grecaptcha/issues"
   },
-  "homepage": "https://github.com/thiamsantos/invisible-grecaptcha#readme"
+  "homepage": "https://github.com/thiamsantos/invisible-grecaptcha#readme",
+  "devDependencies": {
+    "babel-core": "^6.26.0",
+    "babel-plugin-external-helpers": "^6.22.0",
+    "babel-preset-env": "^1.6.1",
+    "babel-preset-stage-0": "^6.24.1",
+    "husky": "^0.14.3",
+    "jest": "^22.1.4",
+    "prettier": "^1.10.2",
+    "rollup": "^0.55.1",
+    "rollup-plugin-babel": "^3.0.3",
+    "uglify-js": "^3.3.9",
+    "xo": "^0.18.2"
+  },
+  "xo": {
+    "space": true,
+    "semicolon": false,
+    "envs": ["browser", "jest"]
+  },
+  "prettier": {
+    "singleQuote": true,
+    "semi": false,
+    "bracketSpacing": false,
+    "trailingComma": "none"
+  }
 }
