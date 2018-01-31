@@ -10,17 +10,29 @@
     "prelint": "prettier --write \"src/**/*.js\" --write rollup.config.js",
     "lint": "xo --fix",
     "test": "jest",
+    "test:watch": "jest --watch",
+    "coverage": "jest --coverage",
     "build": "rollup -c && uglifyjs dist/index.umd.js -cm -o dist/index.min.js",
     "precommit": "npm run lint && npm test && npm run build",
-    "prepublish": "npm run build"
+    "prepublish": "npm run build",
+    "coveralls": "npm run coverage && cat coverage/lcov.info | coveralls"
   },
-  "files": ["dist", "src/index.d.ts"],
+  "files": [
+    "dist",
+    "src/index.d.ts"
+  ],
   "types": "./src/index.d.ts",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/thiamsantos/invisible-grecaptcha.git"
   },
-  "keywords": ["recaptcha", "grecapctcha", "google", "invisible", "captcha"],
+  "keywords": [
+    "recaptcha",
+    "grecapctcha",
+    "google",
+    "invisible",
+    "captcha"
+  ],
   "author": "Thiago Santos",
   "license": "MIT",
   "bugs": {
@@ -32,6 +44,7 @@
     "babel-plugin-external-helpers": "^6.22.0",
     "babel-preset-env": "^1.6.1",
     "babel-preset-stage-0": "^6.24.1",
+    "coveralls": "^3.0.0",
     "husky": "^0.14.3",
     "jest": "^22.1.4",
     "prettier": "^1.10.2",
@@ -43,7 +56,10 @@
   "xo": {
     "space": true,
     "semicolon": false,
-    "envs": ["browser", "jest"]
+    "envs": [
+      "browser",
+      "jest"
+    ]
   },
   "prettier": {
     "singleQuote": true,
