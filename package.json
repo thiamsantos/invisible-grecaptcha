@@ -13,9 +13,10 @@
     "test:watch": "jest --watch",
     "coverage": "jest --coverage",
     "build": "rollup -c && uglifyjs dist/index.umd.js -cm -o dist/index.min.js",
-    "precommit": "npm run lint && npm test && npm run build",
+    "precommit": "npm run lint && npm test && npm run build && npm run docs && git add README.md",
     "prepublish": "npm run build",
-    "coveralls": "npm run coverage && cat coverage/lcov.info | coveralls"
+    "coveralls": "npm run coverage && cat coverage/lcov.info | coveralls",
+    "docs": "documentation readme src/index.js --section API -q"
   },
   "files": [
     "dist",
@@ -45,6 +46,7 @@
     "babel-preset-env": "^1.6.1",
     "babel-preset-stage-0": "^6.24.1",
     "coveralls": "^3.0.0",
+    "documentation": "^5.3.5",
     "husky": "^0.14.3",
     "jest": "^22.1.4",
     "prettier": "^1.10.2",

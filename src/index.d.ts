@@ -3,21 +3,18 @@ declare module 'invisible-grecaptcha' {
 }
 
 declare namespace invisibleGrecaptcha {
-  interface Grecaptcha {
-    recaptchaId: number
-    container: HTMLElement
-  }
+  type GrecaptchaId = number
 
   interface Options {
     sitekey: string
-    callback: Function
+    callback: (token: string) => void
     locale?: string
     position?: string
     container?: HTMLElement
   }
 
-  function createInvisibleRecaptcha(options: Options): Grecaptcha
-  function execute(grecaptcha: Grecaptcha)
-  function reset(grecaptcha: Grecaptcha)
-  function getResponse(grecaptcha: Grecaptcha): string
+  function createInvisibleRecaptcha(options: Options): GrecaptchaId
+  function execute(grecaptchaId: GrecaptchaId)
+  function reset(grecaptchaId: GrecaptchaId)
+  function getResponse(grecaptchaId: GrecaptchaId): string
 }

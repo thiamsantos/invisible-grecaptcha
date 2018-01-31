@@ -43,3 +43,20 @@ export function validateRecaptchaId(recaptchaId) {
     throw buildParamError('recaptchaId', 'number')
   }
 }
+
+export function render({container, sitekey, callback, position}) {
+  const recaptchaId = window.grecaptcha.render(container, {
+    sitekey,
+    callback,
+    size: 'invisible',
+    badge: position
+  })
+
+  return {recaptchaId, container}
+}
+
+export function createContainer() {
+  const container = document.createElement('div')
+  document.body.appendChild(container)
+  return container
+}
