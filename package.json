@@ -68,6 +68,5 @@
     "semi": false,
     "bracketSpacing": false,
     "trailingComma": "none"
-  },
-  "dependencies": {}
+  }
 }
