@@ -1,6 +1,6 @@
 import {
   loadScript,
-  isRequired,
+  validateRequired,
   isString,
   isFunction,
   validateRecaptchaId,
@@ -20,12 +20,15 @@ import {
  * @returns {number}
  */
 export function createInvisibleGrecaptcha({
-  sitekey = isRequired('sitekey'),
-  callback = isRequired('callback'),
+  sitekey,
+  callback,
   locale = null,
   position = 'bottomright',
   container = createContainer()
 }) {
+  validateRequired(sitekey, 'sitekey')
+  validateRequired(callback, 'callback')
+
   return new Promise((resolve, reject) => {
     if (!isString(sitekey)) {
       reject(buildParamError('sitekey', 'string'))
@@ -61,7 +64,7 @@ export function createInvisibleGrecaptcha({
  * Programatically invoke the reCAPTCHA check.
  * @param {number} recaptchaId - Captcha id.
  */
-export function execute(recaptchaId = isRequired('recaptchaId')) {
+export function execute(recaptchaId) {
   validateRecaptchaId(recaptchaId)
   window.grecaptcha.execute(recaptchaId)
 }
@@ -70,7 +73,7 @@ export function execute(recaptchaId = isRequired('recaptchaId')) {
  * Resets the reCAPTCHA widget.
  * @param {number} recaptchaId - Captcha id.
  */
-export function reset(recaptchaId = isRequired('recaptchaId')) {
+export function reset(recaptchaId) {
   validateRecaptchaId(recaptchaId)
   window.grecaptcha.reset(recaptchaId)
 }
@@ -80,7 +83,7 @@ export function reset(recaptchaId = isRequired('recaptchaId')) {
  * @param {number} recaptchaId - Captcha id.
  * @returns {string}
  */
-export function getResponse(recaptchaId = isRequired('recaptchaId')) {
+export function getResponse(recaptchaId) {
   validateRecaptchaId(recaptchaId)
   return window.grecaptcha.getResponse(recaptchaId)
 }

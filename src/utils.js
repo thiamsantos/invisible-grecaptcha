@@ -16,8 +16,10 @@ export function loadScript(url) {
   })
 }
 
-export function isRequired(name) {
-  throw new TypeError(`param ${name} is required`)
+export function validateRequired(arg, name) {
+  if (arg === null || arg === undefined) {
+    throw new TypeError(`param ${name} is required`)
+  }
 }
 
 export function isString(val) {
@@ -39,6 +41,7 @@ export function buildParamError(param, expectedType) {
 }
 
 export function validateRecaptchaId(recaptchaId) {
+  validateRequired(recaptchaId, 'recaptchaId')
   if (!isNumber(recaptchaId)) {
     throw buildParamError('recaptchaId', 'number')
   }
