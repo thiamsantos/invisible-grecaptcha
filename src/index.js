@@ -3,6 +3,7 @@ import {
   isRequired,
   isString,
   isFunction,
+  validateRecaptchaId,
   buildParamError
 } from './utils'
 
@@ -61,13 +62,16 @@ export function createInvisibleGrecaptcha({
   })
 }
 
-export function execute({recaptchaId}) {
+export function execute({recaptchaId = isRequired('recaptchaId')}) {
+  validateRecaptchaId(recaptchaId)
   window.grecaptcha.execute(recaptchaId)
 }
 
-export function reset({recaptchaId}) {
+export function reset({recaptchaId = isRequired('recaptchaId')}) {
+  validateRecaptchaId(recaptchaId)
   window.grecaptcha.reset(recaptchaId)
 }
-export function getResponse({recaptchaId}) {
+export function getResponse({recaptchaId = isRequired('recaptchaId')}) {
+  validateRecaptchaId(recaptchaId)
   return window.grecaptcha.getResponse(recaptchaId)
 }

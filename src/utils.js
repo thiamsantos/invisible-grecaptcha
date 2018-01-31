@@ -28,8 +28,18 @@ export function isFunction(val) {
   return typeof val === 'function' || val instanceof Function
 }
 
+export function isNumber(val) {
+  return typeof val === 'number' || val instanceof Number
+}
+
 export function buildParamError(param, expectedType) {
   return new TypeError(
     `param ${param} has an unexpected type, a ${expectedType} is expected.`
   )
+}
+
+export function validateRecaptchaId(recaptchaId) {
+  if (!isNumber(recaptchaId)) {
+    throw buildParamError('recaptchaId', 'number')
+  }
 }
