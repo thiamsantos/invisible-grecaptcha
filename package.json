@@ -61,6 +61,9 @@
     "envs": [
       "browser",
       "jest"
+    ],
+    "ignores": [
+      "docs/index.js"
     ]
   },
   "prettier": {
