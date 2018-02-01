@@ -1,10 +1,10 @@
-const CALLBACK_NAME = '_grecaptcha.onload-callback'
+const CALLBACK_NAME = '_grecaptchaonloadcallback'
 
 export function loadScript(locale) {
   return new Promise((resolve, reject) => {
-    const url = `https://www.google.com/recaptcha/api.js?onload=${CALLBACK_NAME}${
-      locale === false ? '' : `&hl=${encodeURIComponent(locale)}`
-    }`
+    const url = `https://www.google.com/recaptcha/api.js?onload=${encodeURIComponent(
+      CALLBACK_NAME
+    )}${locale === false ? '' : `&hl=${encodeURIComponent(locale)}`}`
 
     window[CALLBACK_NAME] = resolve
 

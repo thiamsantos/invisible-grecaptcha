@@ -6,7 +6,6 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Invisible Grecaptcha</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.6.2/css/bulma.css">
-    <script src="https://cdn.jsdelivr.net/npm/invisible-grecaptcha/dist/index.umd.js"></script>
 </head>
 <body>
     <div class="section">
@@ -18,42 +17,7 @@
             <button class="button is-info" id="get-response">Get Response</button>
         </div>
     </div>
-    <script>
-        ;(async function() {
-            const executeElement = document.getElementById('execute')
-            const resetElement = document.getElementById('reset')
-            const getResponseElement = document.getElementById('get-response')
-
-            function verifyCallback(token) {
-                console.log(token)
-            }
-
-            const {
-                createInvisibleGrecaptcha,
-                execute,
-                reset,
-                getResponse
-            } = window.invisibleGrecaptcha
-
-            const grecaptcha = await createInvisibleGrecaptcha({
-                sitekey: '6LdLnkMUAAAAAA0e7x8KEw9n7W8MMGpwCMszFBwm',
-                callback: verifyCallback,
-                locale: 'pt-BR'
-            })
-
-            executeElement.addEventListener('click', () => {
-                execute(grecaptcha)
-            })
-
-            resetElement.addEventListener('click', () => {
-                reset(grecaptcha)
-            })
-
-            getResponseElement.addEventListener('click', () => {
-                const token = getResponse(grecaptcha)
-                console.log({token})
-            })
-        })()
-    </script>
+    <script src="https://cdn.jsdelivr.net/npm/invisible-grecaptcha/dist/index.umd.js"></script>
+    <script src="index.js"></script>
 </body>
 </html>

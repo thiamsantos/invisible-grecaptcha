@@ -48,14 +48,14 @@ function verifyCallback(token) {
   console.log(token)
 }
 
-const grecaptcha = await createInvisibleRecaptcha({
+const grecaptchaId = await createInvisibleRecaptcha({
   sitekey: 'RECAPTCHA_SITE_KEY',
   callback: verifyCallback
 })
 
-execute(grecaptcha)
-reset(grecaptcha)
-getResponse(grecaptcha)
+execute(grecaptchaId)
+reset(grecaptchaId)
+getResponse(grecaptchaId)
 ```
 
 ## API
