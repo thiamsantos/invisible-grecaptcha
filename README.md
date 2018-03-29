@@ -2,7 +2,6 @@
 
 [![npm (scoped)](https://img.shields.io/npm/v/invisible-grecaptcha.svg)](https://www.npmjs.com/package/invisible-grecaptcha)
 [![Travis](https://img.shields.io/travis/thiamsantos/invisible-grecaptcha.svg)](https://travis-ci.org/thiamsantos/invisible-grecaptcha)
-[![Coveralls](https://img.shields.io/coveralls/thiamsantos/invisible-grecaptcha.svg)](https://coveralls.io/github/thiamsantos/invisible-grecaptcha?branch=master)
 [![XO code style](https://img.shields.io/badge/code_style-XO-5ed9c7.svg)](https://github.com/sindresorhus/xo)
 
 > Invisible reCAPTCHA integration
