@@ -63,11 +63,6 @@ Create an invisible grecaptcha and returns the recaptcha token.
 **Parameters**
 
 -   `sitekey` **[string](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String)** Your recaptcha sitekey. You can get one here: <https://www.google.com/recaptcha/admin>.
-    -   `sitekey.locale`   (optional, default `'en'`)
-    -   `sitekey.position`   (optional, default `'bottomright'`)
--   `sitekey` **[string](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String)** Your recaptcha sitekey. You can get one here: <https://www.google.com/recaptcha/admin>.
-    -   `sitekey.locale`   (optional, default `'en'`)
-    -   `sitekey.position`   (optional, default `'bottomright'`)
 -   `options` **[Object](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Object)** The options to create a invisible recaptcha.
     -   `options.locale` **[string](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String)** Language of the captcha. See available language codes <https://developers.google.com/recaptcha/docs/language>. Auto-detects the user's language if unspecified. (optional, default `en`)
     -   `options.position` **[string](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String)** Position the reCAPTCHA badge. Values: bottomright, bottomleft and inline. (optional, default `bottomright`)

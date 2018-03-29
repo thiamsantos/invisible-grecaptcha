@@ -9,8 +9,8 @@ import {
 
 /**
  * Create an invisible grecaptcha and returns the recaptcha token.
- * @param {Object} options - The options to create a invisible recaptcha.
  * @param {string} sitekey - Your recaptcha sitekey. You can get one here: https://www.google.com/recaptcha/admin.
+ * @param {Object} options - The options to create a invisible recaptcha.
  * @param {string} [options.locale = en] - Language of the captcha. See available language codes https://developers.google.com/recaptcha/docs/language. Auto-detects the user's language if unspecified.
  * @param {string} [options.position = bottomright] - Position the reCAPTCHA badge. Values: bottomright, bottomleft and inline.
  * @returns {string}
