@@ -29,10 +29,6 @@ export function isString(val) {
   return typeof val === 'string' || val instanceof String
 }
 
-export function isFunction(val) {
-  return typeof val === 'function' || val instanceof Function
-}
-
 export function isNumber(val) {
   return typeof val === 'number' || val instanceof Number
 }
@@ -43,26 +39,29 @@ export function buildParamError(param, expectedType) {
   )
 }
 
-export function validateRecaptchaId(recaptchaId) {
-  validateRequired(recaptchaId, 'recaptchaId')
-  if (!isNumber(recaptchaId)) {
-    throw buildParamError('recaptchaId', 'number')
-  }
-}
-
-export function render({container, sitekey, callback, position}) {
-  const recaptchaId = window.grecaptcha.render(container, {
+export function render({sitekey, resolve, position}) {
+  const recaptchaId = window.grecaptcha.render(createContainer(), {
     sitekey,
-    callback,
+    callback: resolve,
     size: 'invisible',
     badge: position
   })
 
-  return recaptchaId
+  window.grecaptcha.execute(recaptchaId)
+}
+
+export function destroyContainer() {
+  const el = document.getElementById('invisible-captcha')
+  if (el) {
+    el.parentNode.removeChild(el)
+  }
 }
 
 export function createContainer() {
+  destroyContainer()
+
   const container = document.createElement('div')
+  container.id = 'invisible-captcha'
   document.body.appendChild(container)
   return container
 }

@@ -37,25 +37,15 @@ You can find the library on `window.invisibleGrecaptcha`.
 ## Usage
 
 ```js
-import {
-  createInvisibleGrecaptcha, 
+import { 
   execute, 
-  reset, 
-  getResponse,
+  destroy, 
 } from 'invisible-grecaptcha'
 
-function verifyCallback(token) {
-  console.log(token)
-}
 
-const grecaptchaId = await createInvisibleRecaptcha({
-  sitekey: 'RECAPTCHA_SITE_KEY',
-  callback: verifyCallback
-})
+const token = await execute('RECAPTCHA_SITE_KEY')
 
-execute(grecaptchaId)
-reset(grecaptchaId)
-getResponse(grecaptchaId)
+destroy()
 ```
 
 ## API
@@ -64,62 +54,30 @@ getResponse(grecaptchaId)
 
 #### Table of Contents
 
--   [createInvisibleGrecaptcha](#createinvisiblegrecaptcha)
 -   [execute](#execute)
--   [reset](#reset)
--   [getResponse](#getresponse)
--   [verifyCallback](#verifycallback)
-
-### createInvisibleGrecaptcha
-
-Create an invisible grecaptcha and returns the id of the capctha.
-
-**Parameters**
-
--   `options` **[Object](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Object)** The options to create a invisible recaptcha.
-    -   `options.sitekey` **[string](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String)** Your recaptcha sitekey. You can get one here: <https://www.google.com/recaptcha/admin>.
-    -   `options.callback` **[verifyCallback](#verifycallback)** Captcha callback.
-    -   `options.locale` **[string](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String)?** Language of the captcha. See available language codes <https://developers.google.com/recaptcha/docs/language>. Auto-detects the user's language if unspecified. (optional, default `null`)
-    -   `options.position` **[string](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String)** Position the reCAPTCHA badge. Values: bottomright, bottomleft and inline. (optional, default `bottomright`)
-    -   `options.container` **[HTMLElement](https://developer.mozilla.org/docs/Web/HTML/Element)?** Container where the captcha will be renderedd. If none is provided a empty div will be create on the body. (optional, default `createContainer()`)
-
-Returns **[number](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Number)** 
+-   [destroy](#destroy)
 
 ### execute
 
-Programatically invoke the reCAPTCHA check.
+Create an invisible grecaptcha and returns the recaptcha token.
 
 **Parameters**
 
--   `recaptchaId` **[number](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Number)** Captcha id.
-
-### reset
-
-Resets the reCAPTCHA widget.
-
-**Parameters**
-
--   `recaptchaId` **[number](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Number)** Captcha id.
-
-### getResponse
-
-Gets the response for the reCAPTCHA widget.
-
-**Parameters**
-
--   `recaptchaId` **[number](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Number)** Captcha id.
+-   `sitekey` **[string](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String)** Your recaptcha sitekey. You can get one here: <https://www.google.com/recaptcha/admin>.
+    -   `sitekey.locale`   (optional, default `'en'`)
+    -   `sitekey.position`   (optional, default `'bottomright'`)
+-   `sitekey` **[string](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String)** Your recaptcha sitekey. You can get one here: <https://www.google.com/recaptcha/admin>.
+    -   `sitekey.locale`   (optional, default `'en'`)
+    -   `sitekey.position`   (optional, default `'bottomright'`)
+-   `options` **[Object](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Object)** The options to create a invisible recaptcha.
+    -   `options.locale` **[string](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String)** Language of the captcha. See available language codes <https://developers.google.com/recaptcha/docs/language>. Auto-detects the user's language if unspecified. (optional, default `en`)
+    -   `options.position` **[string](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String)** Position the reCAPTCHA badge. Values: bottomright, bottomleft and inline. (optional, default `bottomright`)
 
 Returns **[string](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String)** 
 
-### verifyCallback
+### destroy
 
-Callback to be executed when the user submits a successful CAPTCHA response.
-
-Type: [Function](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Statements/function)
-
-**Parameters**
-
--   `token` **[string](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String)** Recaptcha token.
+Destroy the instance of an invisible grecaptcha.
 
 ## Contributing
 
