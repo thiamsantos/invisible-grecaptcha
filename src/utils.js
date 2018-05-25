@@ -1,6 +1,6 @@
 const CALLBACK_NAME = '_grecaptchaonloadcallback'
 
-let loadScriptPromise = undefined
+let loadScriptPromise
 
 /**
  * Returns a promise that resolves once Google's reCAPTCHA library is loaded. If the library is already loaded, then no
@@ -12,28 +12,29 @@ export function loadScript(locale) {
   // Do this work just once, regardless of how many times this function is called, by saving the created promise and
   // returning it forevermore.
   if (!loadScriptPromise) {
-
     // It is possible that the reCAPTCHA library has already been loaded (perhaps with a static <script> tag in the
-    // HTML). In that case there's no work to do, so just return a pre-resolved promise.
+    // HTML). In that case there's no work to do, so just return a pre-resolved promise. Otherwise dynamically load the
+    // script.
     if (window.grecaptcha) {
       loadScriptPromise = Promise.resolve()
-
-    // Otherwise dynamically load the script.
     } else {
       loadScriptPromise = new Promise((resolve, reject) => {
-        const url = 'https://www.google.com/recaptcha/api.js'
-          + `?onload=${encodeURIComponent(CALLBACK_NAME)}`
-          + (locale ? `&hl=${encodeURIComponent(locale)}` : '')
-    
+        const url =
+          'https://www.google.com/recaptcha/api.js' +
+          `?onload=${encodeURIComponent(CALLBACK_NAME)}` +
+          (locale ? `&hl=${encodeURIComponent(locale)}` : '')
+
         window[CALLBACK_NAME] = resolve
-    
+
         const script = document.createElement('script')
         script.type = 'text/javascript'
         script.src = url
         script.onerror = err => {
-          reject(new URIError(`The script ${err.target.src} is not accessible.`))
+          reject(
+            new URIError(`The script ${err.target.src} is not accessible.`)
+          )
         }
-    
+
         document.head.appendChild(script)
       })
     }

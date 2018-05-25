@@ -17,7 +17,10 @@ import {
  * @param {string} [options.position = bottomright] - Position the reCAPTCHA badge. Values: bottomright, bottomleft and inline.
  * @returns {string}
  */
-export function execute(sitekey, {locale = 'en', position = 'bottomright'} = {}) {
+export function execute(
+  sitekey,
+  {locale = 'en', position = 'bottomright'} = {}
+) {
   return new Promise((resolve, reject) => {
     validateRequired(sitekey, 'sitekey')
 
