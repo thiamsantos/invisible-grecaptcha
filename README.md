@@ -55,7 +55,6 @@ destroy()
 
 -   [execute](#execute)
 -   [destroy](#destroy)
--   [loadScript](#loadscript)
 
 ### execute
 
@@ -75,17 +74,6 @@ Returns **[string](https://developer.mozilla.org/docs/Web/JavaScript/Reference/G
 ### destroy
 
 Destroy the instance of an invisible grecaptcha.
-
-### loadScript
-
-Returns a promise that resolves once Google's reCAPTCHA library is loaded. If the library is already loaded, then no
-work is performed, otherwise the library is dynamically loaded.
-
-**Parameters**
-
--   `locale` **[string](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String)?** one of the language codes at <https://developers.google.com/recaptcha/docs/language>.
-
-Returns **[Promise](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Promise)** 
 
 ## Contributing
 

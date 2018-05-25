@@ -2,12 +2,10 @@ const CALLBACK_NAME = '_grecaptchaonloadcallback'
 
 let loadScriptPromise
 
-/**
- * Returns a promise that resolves once Google's reCAPTCHA library is loaded. If the library is already loaded, then no
- * work is performed, otherwise the library is dynamically loaded.
- * @param {string} [locale] - one of the language codes at https://developers.google.com/recaptcha/docs/language.
- * @returns {Promise}
- */
+// Returns a promise that resolves once Google's reCAPTCHA library is loaded. If the library is already loaded, then no
+// work is performed, otherwise the library is dynamically loaded.
+// @param {string} [locale] - one of the language codes at https://developers.google.com/recaptcha/docs/language.
+// @returns {Promise}
 export function loadScript(locale) {
   // Do this work just once, regardless of how many times this function is called, by saving the created promise and
   // returning it forevermore.
