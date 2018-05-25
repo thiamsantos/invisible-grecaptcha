@@ -12,9 +12,9 @@ export function loadScript(locale) {
   // Do this work just once, regardless of how many times this function is called, by saving the created promise and
   // returning it forevermore.
   if (!loadScriptPromise) {
-    // It is possible that the reCAPTCHA library has already been loaded (perhaps with a static <script> tag in the
-    // HTML). In that case there's no work to do, so just return a pre-resolved promise. Otherwise dynamically load the
-    // script.
+    // It is possible that the reCAPTCHA library has already been loaded by alternative means (perhaps with a static
+    // <script> tag in the HTML). In that case there's no work to do, so just return a pre-resolved promise. Otherwise
+    // dynamically load the script.
     if (window.grecaptcha) {
       loadScriptPromise = Promise.resolve()
     } else {
