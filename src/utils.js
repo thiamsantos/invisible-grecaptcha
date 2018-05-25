@@ -39,12 +39,13 @@ export function buildParamError(param, expectedType) {
   )
 }
 
-export function render({sitekey, resolve, position}) {
+export function render({sitekey, position, resolve, reject}) {
   const recaptchaId = window.grecaptcha.render(createContainer(), {
     sitekey,
-    callback: resolve,
     size: 'invisible',
-    badge: position
+    badge: position,
+    callback: resolve,
+    'error-callback': reject
   })
 
   window.grecaptcha.execute(recaptchaId)

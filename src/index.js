@@ -33,11 +33,11 @@ export function execute(sitekey, {locale = 'en', position = 'bottomright'}) {
 
     return new Promise((resolve, reject) => {
       if (window.grecaptcha) {
-        render({sitekey, resolve, position})
+        render({sitekey, position, resolve, reject})
       } else {
         loadScript(locale)
           .then(() => {
-            render({sitekey, resolve, position})
+            render({sitekey, position, resolve, reject})
           })
           .catch(reject)
       }
