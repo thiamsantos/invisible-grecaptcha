@@ -31,17 +31,9 @@ export function execute(sitekey, {locale = 'en', position = 'bottomright'}) {
       reject(buildParamError('locale', 'string'))
     }
 
-    return new Promise((resolve, reject) => {
-      if (window.grecaptcha) {
-        render({sitekey, position, resolve, reject})
-      } else {
-        loadScript(locale)
-          .then(() => {
-            render({sitekey, position, resolve, reject})
-          })
-          .catch(reject)
-      }
-    })
+    loadScript(locale)
+      .then(() => render({sitekey, position, resolve, reject}))
+      .catch(reject)
   })
 }
 

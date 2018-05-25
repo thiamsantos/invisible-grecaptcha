@@ -1,22 +1,45 @@
 const CALLBACK_NAME = '_grecaptchaonloadcallback'
 
+let loadScriptPromise = undefined
+
+/**
+ * Returns a promise that resolves once Google's reCAPTCHA library is loaded. If the library is already loaded, then no
+ * work is performed, otherwise the library is dynamically loaded.
+ * @param {string} [locale] - one of the language codes at https://developers.google.com/recaptcha/docs/language.
+ * @returns {Promise}
+ */
 export function loadScript(locale) {
-  return new Promise((resolve, reject) => {
-    const url = `https://www.google.com/recaptcha/api.js?onload=${encodeURIComponent(
-      CALLBACK_NAME
-    )}${locale === false ? '' : `&hl=${encodeURIComponent(locale)}`}`
+  // Do this work just once, regardless of how many times this function is called, by saving the created promise and
+  // returning it forevermore.
+  if (!loadScriptPromise) {
 
-    window[CALLBACK_NAME] = resolve
+    // It is possible that the reCAPTCHA library has already been loaded (perhaps with a static <script> tag in the
+    // HTML). In that case there's no work to do, so just return a pre-resolved promise.
+    if (window.grecaptcha) {
+      loadScriptPromise = Promise.resolve()
 
-    const script = document.createElement('script')
-    script.type = 'text/javascript'
-    script.src = url
-    script.onerror = err => {
-      reject(new URIError(`The script ${err.target.src} is not accessible.`))
+    // Otherwise dynamically load the script.
+    } else {
+      loadScriptPromise = new Promise((resolve, reject) => {
+        const url = 'https://www.google.com/recaptcha/api.js'
+          + `?onload=${encodeURIComponent(CALLBACK_NAME)}`
+          + (locale ? `&hl=${encodeURIComponent(locale)}` : '')
+    
+        window[CALLBACK_NAME] = resolve
+    
+        const script = document.createElement('script')
+        script.type = 'text/javascript'
+        script.src = url
+        script.onerror = err => {
+          reject(new URIError(`The script ${err.target.src} is not accessible.`))
+        }
+    
+        document.head.appendChild(script)
+      })
     }
+  }
 
-    document.head.appendChild(script)
-  })
+  return loadScriptPromise
 }
 
 export function validateRequired(arg, name) {
