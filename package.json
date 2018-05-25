@@ -1,6 +1,6 @@
 {
   "name": "invisible-grecaptcha",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "Invisible reCAPTCHA integration",
   "source": "src/index.js",
   "main": "dist/index.js",
