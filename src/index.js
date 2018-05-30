@@ -17,7 +17,10 @@ import {
  * @param {string} [options.position = bottomright] - Position the reCAPTCHA badge. Values: bottomright, bottomleft and inline.
  * @returns {string}
  */
-export function execute(sitekey, {locale = 'en', position = 'bottomright'} = {}) {
+export function execute(
+  sitekey,
+  {locale = 'en', position = 'bottomright'} = {}
+) {
   return new Promise((resolve, reject) => {
     validateRequired(sitekey, 'sitekey')
 
@@ -33,17 +36,11 @@ export function execute(sitekey, {locale = 'en', position = 'bottomright'} = {})
       reject(buildParamError('locale', 'string'))
     }
 
-    return new Promise((resolve, reject) => {
-      if (window.grecaptcha) {
+    loadScript(locale)
+      .then(() => {
         render({sitekey, position, resolve, reject})
-      } else {
-        loadScript(locale)
-          .then(() => {
-            render({sitekey, position, resolve, reject})
-          })
-          .catch(reject)
-      }
-    })
+      })
+      .catch(reject)
   })
 }
 
