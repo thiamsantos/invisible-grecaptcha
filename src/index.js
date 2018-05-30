@@ -37,7 +37,9 @@ export function execute(
     }
 
     loadScript(locale)
-      .then(() => render({sitekey, position, resolve, reject}))
+      .then(() => {
+        render({sitekey, position, resolve, reject})
+      })
       .catch(reject)
   })
 }

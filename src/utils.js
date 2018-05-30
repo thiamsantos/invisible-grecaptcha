@@ -1,26 +1,24 @@
 const CALLBACK_NAME = '_grecaptchaonloadcallback'
 
-let loadScriptPromise
+let loadScriptPromise = null
 
 // Returns a promise that resolves once Google's reCAPTCHA library is loaded. If the library is already loaded, then no
 // work is performed, otherwise the library is dynamically loaded.
-// @param {string} [locale] - one of the language codes at https://developers.google.com/recaptcha/docs/language.
-// @returns {Promise}
+// The `locale` parameter is one of the language codes at https://developers.google.com/recaptcha/docs/language.
 export function loadScript(locale) {
-  // Do this work just once, regardless of how many times this function is called, by saving the created promise and
-  // returning it forevermore.
-  if (!loadScriptPromise) {
-    // It is possible that the reCAPTCHA library has already been loaded by alternative means (perhaps with a static
-    // <script> tag in the HTML). In that case there's no work to do, so just return a pre-resolved promise. Otherwise
-    // dynamically load the script.
-    if (window.grecaptcha) {
-      loadScriptPromise = Promise.resolve()
-    } else {
-      loadScriptPromise = new Promise((resolve, reject) => {
+  // It is possible that the reCAPTCHA library has already been loaded by alternative means (perhaps with a static
+  // <script> tag in the HTML). In that case there's no work to do, so just return a pre-resolved promise. Otherwise
+  // dynamically load the script. Do this work just once, regardless of how many times this function is called, by
+  // saving the created promise and returning it forevermore.
+  loadScriptPromise =
+    loadScriptPromise ||
+    (window.grecaptcha ?
+      Promise.resolve() :
+      new Promise((resolve, reject) => {
         const url =
-          'https://www.google.com/recaptcha/api.js' +
-          `?onload=${encodeURIComponent(CALLBACK_NAME)}` +
-          (locale ? `&hl=${encodeURIComponent(locale)}` : '')
+            'https://www.google.com/recaptcha/api.js' +
+            `?onload=${encodeURIComponent(CALLBACK_NAME)}` +
+            (locale ? `&hl=${encodeURIComponent(locale)}` : '')
 
         window[CALLBACK_NAME] = resolve
 
@@ -29,14 +27,12 @@ export function loadScript(locale) {
         script.src = url
         script.onerror = err => {
           reject(
-            new URIError(`The script ${err.target.src} is not accessible.`)
-          )
+              new URIError(`The script ${err.target.src} is not accessible.`)
+            )
         }
 
         document.head.appendChild(script)
-      })
-    }
-  }
+      }))
 
   return loadScriptPromise
 }
