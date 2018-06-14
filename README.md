@@ -58,12 +58,14 @@ destroy()
 
 ### execute
 
-Create an invisible grecaptcha and returns the recaptcha token.
+Creates an invisible reCAPTCHA instance, dynamically loading Google's library if necessary, and then returns a user
+response token. This is a client-side step, and the token must be sent to the server side for verification as a
+separate step. Tokens are single use and can be verified only once.
 
 **Parameters**
 
 -   `sitekey` **[string](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String)** Your recaptcha sitekey. You can get one here: <https://www.google.com/recaptcha/admin>.
--   `options` **[Object](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Object)** The options to create a invisible recaptcha.
+-   `options` **[Object](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Object)?** The options to create an invisible reCAPTCHA. (optional, default `{}`)
     -   `options.locale` **[string](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String)** Language of the captcha. See available language codes <https://developers.google.com/recaptcha/docs/language>. Auto-detects the user's language if unspecified. (optional, default `en`)
     -   `options.position` **[string](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String)** Position the reCAPTCHA badge. Values: bottomright, bottomleft and inline. (optional, default `bottomright`)
 

@@ -8,14 +8,19 @@ import {
 } from './utils'
 
 /**
- * Create an invisible grecaptcha and returns the recaptcha token.
+ * Creates an invisible reCAPTCHA instance, dynamically loading Google's library if necessary, and then returns a user
+ * response token. This is a client-side step, and the token must be sent to the server side for verification as a
+ * separate step. Tokens are single use and can be verified only once.
  * @param {string} sitekey - Your recaptcha sitekey. You can get one here: https://www.google.com/recaptcha/admin.
- * @param {Object} options - The options to create a invisible recaptcha.
+ * @param {Object} [options] - The options to create an invisible reCAPTCHA.
  * @param {string} [options.locale = en] - Language of the captcha. See available language codes https://developers.google.com/recaptcha/docs/language. Auto-detects the user's language if unspecified.
  * @param {string} [options.position = bottomright] - Position the reCAPTCHA badge. Values: bottomright, bottomleft and inline.
  * @returns {string}
  */
-export function execute(sitekey, {locale = 'en', position = 'bottomright'}) {
+export function execute(
+  sitekey,
+  {locale = 'en', position = 'bottomright'} = {}
+) {
   return new Promise((resolve, reject) => {
     validateRequired(sitekey, 'sitekey')
 
@@ -31,17 +36,11 @@ export function execute(sitekey, {locale = 'en', position = 'bottomright'}) {
       reject(buildParamError('locale', 'string'))
     }
 
-    return new Promise((resolve, reject) => {
-      if (window.grecaptcha) {
+    loadScript(locale)
+      .then(() => {
         render({sitekey, position, resolve, reject})
-      } else {
-        loadScript(locale)
-          .then(() => {
-            render({sitekey, position, resolve, reject})
-          })
-          .catch(reject)
-      }
-    })
+      })
+      .catch(reject)
   })
 }
 
