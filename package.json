@@ -9,7 +9,7 @@
   "umd:main": "dist/index.umd.js",
   "browser": "dist/index.umd.js",
   "scripts": {
-    "prelint": "prettier --write \"src/**/*.js\" --write rollup.config.js",
+    "prelint": "prettier --write \"{src,test}/**/*.js\"",
     "lint": "xo --fix",
     "build": "microbundle build --target browser",
     "precommit": "npm run lint && npm run build && npm run docs && git add README.md",

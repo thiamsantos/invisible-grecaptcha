@@ -90,4 +90,4 @@ Temporary Items
 dist
 
 # Unit testing artifacts
-src/tests/trace.json
+test/trace.json
