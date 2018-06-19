@@ -41,7 +41,11 @@ module.exports.browser = {
   page: null,
 
   async start() {
-    this._instance = await puppeteer.launch({headless: !this._debug})
+    this._instance = await puppeteer.launch({
+      // Running Chromium under Travis CI requires disabling the sandbox. See <https://bit.ly/2t8TdJO>.
+      args: process.env.TRAVIS ? ['--no-sandbox'] : [],
+      headless: !this._debug
+    })
     this.page = await this._instance.newPage()
 
     if (this._debug) {
