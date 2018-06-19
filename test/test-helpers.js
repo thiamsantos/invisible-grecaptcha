@@ -7,7 +7,7 @@ const serveHandler = require('serve-handler')
 
 // Encapsulate the asynchronous starting and stopping of a simple HTTP server at http://localhost:3000. This is needed
 // because reCAPTCHAs don't work from within pages loaded directly from the file system.
-module.exports.server = {
+const server = {
   _instance: null,
   _port: 5000,
 
@@ -30,7 +30,7 @@ module.exports.server = {
 }
 
 // Encapsulate the asynchronous starting and stopping of a Chromium browser using puppeteer.
-module.exports.browser = {
+const browser = {
   // Setting _debug to `true` does three things that aid in troubleshooting by:
   // 1. running Chromium with a GUI (i.e. not in headless mode),
   // 2. recording a trace file that can be dropped into devtools for analysis, and
@@ -65,7 +65,7 @@ module.exports.browser = {
 }
 
 // Encapsulate all the library strings and their compositions for consistency.
-module.exports.api = {
+const api = {
   qualify(fn) {
     return `window.${this.library}` + (fn ? `.${fn}()` : '')
   },
@@ -89,4 +89,10 @@ module.exports.api = {
   },
 
   containerId: 'invisible-recaptcha'
+}
+
+module.exports = {
+  api,
+  browser,
+  server
 }

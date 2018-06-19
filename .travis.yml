@@ -2,5 +2,4 @@ language: node_js
 node_js:
   - '8'
 script:
-  # Running the "test" script also runs `npm run lint` and `npm run build` as part of "pretest".
   - npm test
