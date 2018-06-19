@@ -14,7 +14,9 @@
     "build": "microbundle build --target browser",
     "precommit": "npm run lint && npm run build && npm run docs && git add README.md",
     "prepublish": "npm run build",
-    "docs": "documentation readme src/index.js --section API -q"
+    "docs": "documentation readme src/index.js --section API -q",
+    "pretest": "npm run lint && npm run build",
+    "test": "jest"
   },
   "files": [
     "dist",
@@ -40,9 +42,14 @@
   "homepage": "https://github.com/thiamsantos/invisible-grecaptcha#readme",
   "devDependencies": {
     "documentation": "^5.3.5",
+    "grecaptcha": "^1.0.0",
     "husky": "^0.14.3",
+    "jest": "^23.1.0",
     "microbundle": "^0.4.4",
     "prettier": "^1.10.2",
+    "puppeteer": "^1.5.0",
+    "recaptcha-test-keys": "^1.0.0",
+    "serve-handler": "^3.2.1",
     "xo": "^0.18.2"
   },
   "xo": {
