@@ -14,7 +14,6 @@
 -   [Usage](#usage)
 -   [API](#api)
 -   [Contributing](#contributing)
--   [Testing](#testing)
 -   [License](#license)
 
 ## Install
@@ -79,15 +78,6 @@ Destroy the instance of an invisible grecaptcha.
 ## Contributing
 
 See the [contributing file](CONTRIBUTING.md).
-
-## Testing
-
-Unit tests have been created using [puppeteer](https://github.com/GoogleChrome/puppeteer), which in turn controls a
-headless [Chromium](https://www.chromium.org/Home) browser to exercise the API. puppeteer downloads an instance of
-Chromium during the `npm insall` process, so no special installation or configuration should be needed, but of course
-your mileage may vary.
-
-To run tests, simply execute `npm test`.
 
 ## License
 
