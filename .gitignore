@@ -88,3 +88,6 @@ Temporary Items
 
 # dist folder
 dist
+
+# Unit testing artifacts
+test/trace.json
