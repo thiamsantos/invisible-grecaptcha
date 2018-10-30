@@ -8,6 +8,6 @@ declare namespace invisibleGrecaptcha {
     position?: 'bottomright' | 'bottomleft' | 'inline'
   }
 
-  function execute(sitekey: string, options?: Options): string
+  function execute(sitekey: string, options?: Options): Promise<string>
   function destroy(): void
 }
