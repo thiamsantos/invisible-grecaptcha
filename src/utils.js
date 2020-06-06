@@ -16,7 +16,7 @@ export function loadScript(locale, baseUrl) {
       Promise.resolve() :
       new Promise((resolve, reject) => {
         const url =
-            `https://${baseUrl}/recaptcha/api.js` +
+            `${baseUrl}/recaptcha/api.js` +
             `?onload=${encodeURIComponent(CALLBACK_NAME)}` +
             (locale ? `&hl=${encodeURIComponent(locale)}` : '')
 

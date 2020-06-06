@@ -19,7 +19,11 @@ import {
  */
 export function execute(
   sitekey,
-  {locale = 'en', position = 'bottomright', baseUrl = 'www.google.com'} = {}
+  {
+    locale = 'en',
+    position = 'bottomright',
+    baseUrl = 'https://www.google.com'
+  } = {}
 ) {
   return new Promise((resolve, reject) => {
     validateRequired(sitekey, 'sitekey')
