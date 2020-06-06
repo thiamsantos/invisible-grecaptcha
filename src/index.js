@@ -19,7 +19,7 @@ import {
  */
 export function execute(
   sitekey,
-  {locale = 'en', position = 'bottomright'} = {}
+  {locale = 'en', position = 'bottomright', baseUrl = 'www.google.com'} = {}
 ) {
   return new Promise((resolve, reject) => {
     validateRequired(sitekey, 'sitekey')
@@ -36,7 +36,7 @@ export function execute(
       reject(buildParamError('locale', 'string'))
     }
 
-    loadScript(locale)
+    loadScript(locale, baseUrl)
       .then(() => {
         render({sitekey, position, resolve, reject})
       })

@@ -68,6 +68,7 @@ separate step. Tokens are single use and can be verified only once.
 -   `options` **[Object](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Object)?** The options to create an invisible reCAPTCHA. (optional, default `{}`)
     -   `options.locale` **[string](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String)** Language of the captcha. See available language codes <https://developers.google.com/recaptcha/docs/language>. Auto-detects the user's language if unspecified. (optional, default `en`)
     -   `options.position` **[string](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String)** Position the reCAPTCHA badge. Values: bottomright, bottomleft and inline. (optional, default `bottomright`)
+    -   `options.baseUrl`   (optional, default `'www.google.com'`)
 
 Returns **[string](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String)** 
 
