@@ -1,3 +1,7 @@
+> **UNMAINTAINED** This Project Is No Longer Maintained
+
+-------------------------------------------------------
+
 # invisible-grecaptcha
 
 [![npm (scoped)](https://img.shields.io/npm/v/invisible-grecaptcha.svg)](https://www.npmjs.com/package/invisible-grecaptcha)
